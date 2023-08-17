@@ -1,20 +1,16 @@
 import { useQuery } from '@apollo/client'
-import { Alert, CircularProgress, Divider, Grid } from '@mui/material'
-import React from 'react'
+import {  CircularProgress, Divider } from '@mui/material'
 import { GET_Experiences } from '../../Graphql/Query'
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { toast } from 'react-toastify';
 function Experience() {
     const { loading, error, data } = useQuery(GET_Experiences)
     try {
         if (error) {
-            return (
-                <Alert severity="error">{error.message}</Alert>
-            )
+            toast.error(error.message)
         }
     } catch (error) {
         console.log(error)
@@ -29,7 +25,7 @@ function Experience() {
     return (
         <div id="experience" className=' pl-3 pr-3 lg:pl-[350px] lg:pr-[350px] ' >
             <h1 className=' text-center font-bold text-2xl m-10 '>Work Experiences</h1>
-            {loading ? <CircularProgress /> :
+            {loading ? <div className=' flex justify-center mt-5'> <CircularProgress /> </div> :
                 <div id="collapsible" >
                     {data && data.Experience.map(((item: any, index: any) => {
                         return (

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { Link } from "react-router-dom";
+
 function NavBar() {
   const [navbar, setNavbar] = useState(false)
   const changeBackground = () => {
@@ -14,7 +14,6 @@ function NavBar() {
   window.addEventListener("scroll", changeBackground)
   const ButtonToggle = () => {
     try {
-      console.log('executed1')
       let MenuIcon = document.getElementById("MenuIcon") as HTMLElement
       let MenuClose = document.getElementById("MenuClose") as HTMLElement
       let NavMenus = document.getElementById("NavMenus") as HTMLElement
@@ -47,8 +46,6 @@ function NavBar() {
         </div>
       </div>
       <div className='hidden lg:block space-x-6 text-[#666666] font-semibold' >
-      {/* <Link to="about">About</Link> */}
-        {/* <link href="#about">About</link> */}
         <a href="#about" >About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Project</a>

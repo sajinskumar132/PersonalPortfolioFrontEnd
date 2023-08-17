@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: 'https://sajin-s-kumar-portfolio.onrender.com/graphql',
   cache: new InMemoryCache(),
   defaultOptions: {
     watchQuery: {

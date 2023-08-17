@@ -6,20 +6,26 @@ import { useQuery } from '@apollo/client';
 import { GET_PersonalInfo } from '../../Graphql/Query';
 import RobotImage from "../../Util/Images/RobotImage.png"
 import RobotBackground from "../../Util/Images/RobotBackground.png"
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 function Hero() {
 
   const { loading, error, data } = useQuery(GET_PersonalInfo)
+  const [Text,setText]=useState("")
+  useEffect(()=>{
+      if(data && data.Personalinfo){
+        setText(`I’m ${data.Personalinfo[0].name} Nice to meet you`)
+        typeWriter()
+      }
+  },[data,Text])
   try {
     if (error) {
-      return (
-        <Alert severity="error">{error.message}</Alert>
-      )
+      toast.error(error.message)
     }
   } catch (error) {
     console.log(error)
   }
-  console.log(data)
   const downloadURI = (url:string, name:string) => {
     const downloadLink = document.createElement("a");
     const fileName = name;
@@ -27,6 +33,17 @@ function Hero() {
     downloadLink.download = fileName;
     downloadLink.click()
   }
+  
+  var i = 0;
+  var speed = 50;
+ const typeWriter=()=>{
+    if (i < Text.length) {
+      document.getElementById("typetext")!.innerHTML += Text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
   
   return (
     <div id="about"  className=' px-5 flex justify-center gap-[280px] items-center flex-wrap lg:pl-52 lg:pr-52 mt-10'>
@@ -36,7 +53,7 @@ function Hero() {
             <>
               <div>
                 <h1 className=' text-4xl font-bold mb-2'><span>Hi, <WavingHandIcon fontSize='large' className=' text-[#ffcc44] text-3xl' /></span> <br/>
-                 I’m {data.Personalinfo[0].name} Nice to meet you</h1>
+                <span id="typetext"></span> </h1>
                 <h1 className=' font-semibold text-xl bg-gradient-to-r from-blue-600 via-violet-500 to-sky-400 bg-clip-text text-transparent mb-4 mt-3'>{data.Personalinfo[0].Position}</h1>
                 <p className=' lg: max-w-xl font-semibold tracking-wide text-[#666666]'>{data.Personalinfo[0].Description}</p>
                 <div className=' mt-3'>
