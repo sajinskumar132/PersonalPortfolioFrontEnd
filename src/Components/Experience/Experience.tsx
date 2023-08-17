@@ -10,7 +10,7 @@ function Experience() {
     const { loading, error, data } = useQuery(GET_Experiences)
     try {
         if (error) {
-            toast.error(error.message)
+             toast.error(error.message)
         }
     } catch (error) {
         console.log(error)
@@ -24,7 +24,7 @@ function Experience() {
     }
     return (
         <div id="experience" className=' pl-3 pr-3 lg:pl-[350px] lg:pr-[350px] ' >
-            <h1 className=' text-center font-bold text-2xl m-10 '>Work Experiences</h1>
+            <h1 className=' text-center font-bold text-2xl mt-10 mb-6 '>Work Experiences</h1>
             {loading ? <div className=' flex justify-center mt-5'> <CircularProgress /> </div> :
                 <div id="collapsible" >
                     {data && data.Experience.map(((item: any, index: any) => {
