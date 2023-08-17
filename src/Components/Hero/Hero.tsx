@@ -61,7 +61,9 @@ function Hero() {
                     downloadURI(data.Personalinfo[0].Resume,"Sajin_S_Kumar Resume")
                   }}>Download Resume</button>
                   <Tooltip title={data.Personalinfo[0].emailId} arrow placement="top">
-                    <IconButton >
+                    <IconButton onClick={()=>{
+                      window.location.href =`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${data.Personalinfo[0].emailId}`
+                    }} >
                       <EmailIcon />
                     </IconButton>
                   </Tooltip>
