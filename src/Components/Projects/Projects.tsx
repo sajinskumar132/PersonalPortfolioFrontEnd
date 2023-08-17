@@ -44,11 +44,11 @@ function Projects() {
   }
   return (
     <div id="projects" className='lg:pl-64 lg:pr-64 '>
-      <h1 className=' text-center font-bold text-2xl m-10'>Personal Projects</h1>
+      <h1 className=' text-center font-bold text-2xl mt-10 mb-6'>Personal Projects</h1>
       <div className=' flex justify-center gap-2 flex-wrap'>
         {loading ? <CircularProgress /> : <>
           {data && data.Projects.map((item: any) => {
-            return (<Card sx={{ maxWidth: 345 }} >
+            return (<Card sx={{ maxWidth: 345 }} key={item.id} >
               {/* <CardMedia
                   component="img"
                   height="194"
@@ -59,8 +59,8 @@ function Projects() {
                 <Typography gutterBottom variant="h6" component="div">
                   {item.name}
                 </Typography>
-                {item.TechStack.map((Stacks: any) => {
-                  return (<Chip label={Stacks} variant="outlined" className=' mx-1 my-1' />)
+                {item.TechStack.map((Stacks: string,index:number) => {
+                  return (<Chip label={Stacks} variant="outlined" className=' mx-1 my-1' key={index} />)
                 })}
                 <Typography variant="body2" color="text.secondary">
                   {item.Summary}
@@ -83,8 +83,8 @@ function Projects() {
                 </CardActions>
                   <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
-                      {item.Description.map((Descriptions: any) => {
-                        return (<Typography paragraph>
+                      {item.Description.map((Descriptions: string,index:number) => {
+                        return (<Typography paragraph key={index}>
                           {Descriptions}
                         </Typography>)
                       })}

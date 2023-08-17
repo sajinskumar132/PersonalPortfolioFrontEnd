@@ -26,11 +26,11 @@ function Contact() {
           <EmailIcon />
           <p className=' font-semibold'>{data.Personalinfo[0].emailId}</p>
         </div>
-         <div  className=' flex gap-2 items-center' onClick={()=>{
+         <div  className=' flex gap-2 items-center cursor-pointer' onClick={()=>{
            window.location.href = data.Personalinfo[0].linkedinId
          }}>
           <LinkedInIcon />
-          <p className=' font-semibold max-w-[200px]'>{data.Personalinfo[0].linkedinId}</p>
+          <p className=' font-semibold max-w-[200px] break-words'>{data.Personalinfo[0].linkedinId}</p>
          </div>
        </div>
        </>)}

@@ -18,8 +18,8 @@ function Skills() {
       <p className=' text-center font-bold text-lg  text-[#666666]'>Technologies I’ve been working with recently</p>
       <div className=' flex flex-wrap justify-center gap-5 mt-8'>
         {loading ? <CircularProgress /> : <>
-          {data && data.Skills.map((item: any) => {
-            return <div className='bg-gradient-to-r from-blue-600 via-violet-500 to-sky-400 p-[2px] rounded-full'>
+          {data && data.Skills.map((item: any,index:number) => {
+            return <div className='bg-gradient-to-r from-blue-600 via-violet-500 to-sky-400 p-[2px] rounded-full' key={index}>
               {/* <img src={item.image} alt={item.name} className=' w-24 h-24 '/> */}
               <p className=' text-center text-lg font-semibold bg-white px-3 py-1 rounded-full'>{item.name}</p>
             </div>

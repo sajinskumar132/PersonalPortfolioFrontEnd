@@ -46,7 +46,7 @@ function Hero() {
 
   
   return (
-    <div id="about"  className=' px-5 flex justify-center gap-[280px] items-center flex-wrap lg:pl-52 lg:pr-52 mt-5'>
+    <div id="about"  className=' px-5 flex justify-center gap-[280px] items-center flex-wrap lg:pl-52 lg:pr-52'>
       {loading ? <CircularProgress /> :
         <>
           {data && (

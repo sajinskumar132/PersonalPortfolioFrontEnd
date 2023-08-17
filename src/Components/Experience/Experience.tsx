@@ -24,12 +24,12 @@ function Experience() {
     }
     return (
         <div id="experience" className=' pl-3 pr-3 lg:pl-[350px] lg:pr-[350px] ' >
-            <h1 className=' text-center font-bold text-2xl mt-10 mb-6 '>Work Experiences</h1>
+            <h1 className=' text-center font-bold text-2xl mt-10 mb-5 '>Work Experiences</h1>
             {loading ? <div className=' flex justify-center mt-5'> <CircularProgress /> </div> :
                 <div id="collapsible" >
                     {data && data.Experience.map(((item: any, index: any) => {
                         return (
-                            <div className=' py-5' >
+                            <div className=' py-5' key={index} >
                                 <div id={`collapsible-header${index}`} onClick={() => {
                                     Collapsed(`collapsible-header${index}`, `collapsible-content${index}`)
                                 }}>
@@ -65,9 +65,9 @@ function Experience() {
                                 </div>
                                 <div id={`collapsible-content${index}`} style={{ display: 'none' }} className=' mt-4'>
                                     <h5 className=' pl-5 font-semibold '>Task/Responsibility</h5>
-                                    {item && item.TaskOrResponsnibility.map((Taskitem: any) => {
+                                    {item && item.TaskOrResponsnibility.map((Taskitem:string,index:number) => {
                                         return (
-                                            <div className=' flex gap-2 m-2'>
+                                            <div className=' flex gap-2 m-2' key={index}>
                                                 <ArrowForwardIcon />
                                                 <h1>{Taskitem}</h1>
                                             </div>
