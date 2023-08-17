@@ -81,8 +81,9 @@ function Projects() {
                     <ExpandMoreIcon />
                   </ExpandMore>
                 </CardActions>
-                  <Collapse in={expanded} timeout="auto" unmountOnExit>
+                  <Collapse in={item.id === expandedId ? expanded : false} timeout="auto" unmountOnExit>
                     <CardContent>
+                       <p className=' font-semibold pb-1'>Description</p>
                       {item.Description.map((Descriptions: string,index:number) => {
                         return (<Typography paragraph key={index}>
                           {Descriptions}
